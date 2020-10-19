@@ -53,45 +53,46 @@ ENTITA:
 	email
 
 QUERY:
+
 -CREAZIONE
 
 
-CREATE TABLE utente(
-    idUtente text autoincrement PRIMARY KEY,
-    nome text not null,
-    cognome text not null,
-    dataNascita date not null,
-    cf text not null,
-    telefono text not null,
-    email text not null
-);
+	CREATE TABLE utente(
+	    idUtente text autoincrement PRIMARY KEY,
+	    nome text not null,
+	    cognome text not null,
+	    dataNascita date not null,
+	    cf text not null,
+	    telefono text not null,
+	    email text not null
+	);
 
-CREATE TABLE sede(
-    idSede text autoincrement PRIMARY KEY,
-    nome text not null,
-    indirizzo text not null,
-    telefono text not null,
-    email text not null
-);
+	CREATE TABLE sede(
+	    idSede text autoincrement PRIMARY KEY,
+	    nome text not null,
+	    indirizzo text not null,
+	    telefono text not null,
+	    email text not null
+	);
 
-CREATE TABLE libro(
-    idLibro text autoincrement PRIMARY KEY,
-    titolo text not null,
-    autore text not null,
-    genere text not null,
-    casaEditrice text not null,
-    note text not null,
-    edizione date not null,
-    FOREIGN KEY (idSede) REFERENCES autori(idAutore),
-);
+	CREATE TABLE libro(
+	    idLibro text autoincrement PRIMARY KEY,
+	    titolo text not null,
+	    autore text not null,
+	    genere text not null,
+	    casaEditrice text not null,
+	    note text not null,
+	    edizione date not null,
+	    FOREIGN KEY (idSede) REFERENCES autori(idAutore),
+	);
 
-CREATE TABLE prestito(
-    idPrestito text autoincrement PRIMARY KEY,
-    dataInizio date not null,
-    dataFine date not null,
-    durataMax text not null,
-    FOREIGN KEY (idUtente) REFERENCES utente(idLibro),
-    FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
-    FOREIGN KEY (sedeInizio) REFERENCES sede(idSede),
-    FOREIGN KEY (sedeFine) REFERENCES sede(idSede)
-);
+	CREATE TABLE prestito(
+	    idPrestito text autoincrement PRIMARY KEY,
+	    dataInizio date not null,
+	    dataFine date not null,
+	    durataMax text not null,
+	    FOREIGN KEY (idUtente) REFERENCES utente(idLibro),
+	    FOREIGN KEY (idLibro) REFERENCES libro(idLibro),
+	    FOREIGN KEY (sedeInizio) REFERENCES sede(idSede),
+	    FOREIGN KEY (sedeFine) REFERENCES sede(idSede)
+	);
